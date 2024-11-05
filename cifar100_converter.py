@@ -19,7 +19,7 @@ def save_images(data, labels, coarse_labels, label_names, coarse_label_names, sa
         img.save(os.path.join(class_dir, f'{i}.png'))
 
 # 데이터 로드
-cifar100_dir = 'data/cifar100_org'  # 실제 경로로 변경하세요
+cifar100_dir = 'data/cifar100_python'  # 다운받은 pickle 데이터 경로
 train_data = unpickle(os.path.join(cifar100_dir, 'train'))
 test_data = unpickle(os.path.join(cifar100_dir, 'test'))
 meta = unpickle(os.path.join(cifar100_dir, 'meta'))
@@ -30,8 +30,8 @@ coarse_label_names = meta[b'coarse_label_names']
 
 # 이미지 저장
 save_images(train_data[b'data'], train_data[b'fine_labels'], train_data[b'coarse_labels'], 
-            fine_label_names, coarse_label_names, 'cifar100_org/train')
+            fine_label_names, coarse_label_names, 'data/cifar100_org/train')    # 변환한 데이터 저장 경로 - train
 save_images(test_data[b'data'], test_data[b'fine_labels'], test_data[b'coarse_labels'], 
-            fine_label_names, coarse_label_names, 'cifar100_org/test')
+            fine_label_names, coarse_label_names, 'data/cifar100_org/test')    # 변환한 데이터 저장 경로 - test
 
 print("데이터셋 변환 완료")
